@@ -51,6 +51,12 @@ npx hardhat node --fork <url infura ou alchemy>
 
 
 
+Run tests specific contract:
+
+```shell
+ npx hardhat test solidity contracts/Counter.t.sol 
+ ```
+
 ### Make a deployment to Sepolia
 
 This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
