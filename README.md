@@ -29,6 +29,27 @@ You can also selectively run the Solidity or `node:test` tests:
 npx hardhat test solidity
 npx hardhat test nodejs
 ```
+### Opcao 1: Subindo o no local
+
+```shell
+npx hardhat node
+```
+
+### Opcao 2: Fork de uma rede existente
+
+```shell
+npx hardhat node --fork <url infura ou alchemy>
+```
+
+### Script para subir o blockchain local
+
+```json
+"scripts": {
+  "start": "npx hardhat node"
+},
+```
+
+
 
 ### Make a deployment to Sepolia
 

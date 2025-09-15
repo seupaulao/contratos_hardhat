@@ -1,7 +1,6 @@
 import type { HardhatUserConfig } from "hardhat/config";
-
-import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
 import { configVariable } from "hardhat/config";
+import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
 
 const config: HardhatUserConfig = {
   plugins: [hardhatToolboxViemPlugin],
@@ -22,6 +21,14 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
+    local: {
+      type: 'http',
+      chainId: 31337,
+      url: 'http://127.0.0.1:8545/',
+      accounts: {
+      mnemonic: "test test test test test test test test test test test junk"
+    }
+    },
     hardhatMainnet: {
       type: "edr-simulated",
       chainType: "l1",
