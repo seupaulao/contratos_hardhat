@@ -49,8 +49,6 @@ npx hardhat node --fork <url infura ou alchemy>
 },
 ```
 
-
-
 Run tests specific contract:
 
 ```shell
@@ -60,6 +58,18 @@ Run tests specific contract:
 ### Make a deployment to Sepolia
 
 This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
+
+Usar faucet em 
+
+https://sepolia-faucet.pk910.de/#/
+
+https://learnweb3.io/faucets/sepolia/
+
+https://cloud.google.com/application/web3/faucet/ethereum/sepolia
+
+Validador de blocos em:
+
+https://sepolia.etherscan.io/
 
 To run the deployment to a local chain:
 
@@ -82,3 +92,52 @@ After setting the variable, you can run the deployment with the Sepolia network:
 ```shell
 npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
 ```
+
+Para fazer o verify do contrato:
+
+```shell
+npx hardhat ignition verify --network sepolia NOME_DEPLOY_DA_PASTA_DEPLOYMENTS_IGNITION --show-stack-traces
+```
+
+Onde:
+- show-stack-traces
+  - ativa o modo de mostrar na tela caso haja erro
+
+Se sucesso abre algo assim:
+
+```bash
+contracts/LivroDatabase.sol:LivroDatabase
+  Explorer: https://sepolia.etherscan.io/address/ENDERECO_TRANSACAO#code
+```
+
+Deve pegar o **ENDERECO_TRANSACAO** e colocar no sepolia.etherscan.io
+
+No **Read Contract** vai ter os métodos de leitura:
+ - getLivro
+ - a lista 'livros'
+
+No **Write Contract** vai ter os métodos de gravação
+- addLivro
+- deleteLivro
+- updateLivro
+
+Observação: Sempre que for usar qualquer metodo acima é necessário estar conectado a web3
+Logo, na sepolia.etherscan.io, clique no botão vermelho `connect to web3` aí ele 
+vai se conectar a carteira vinculada ao browser
+
+
+
+### Coisas a se fazer
+
+OK 1. fazer o deploy para testenet usando o hardhat
+   - preencher o arquivo `.env` corretamente com os dados necessarios 
+     - NAO FUNCIONA, ao inves deve usar hardhat-keystore, porque estamos usando ignition e nao deploy.js
+
+OK 2. testar/verificar o contrato na testenet
+   - o verify so funciona se fizer de dentro do IDE, no caso, HARDHAT, se levar pra outro IDE o codigo vai der erro
+
+3. criar um dapp
+   - conectar com a carteira
+   - para explorar o contrato
+   - consultar saldo
+   - enviar fundos
