@@ -87,13 +87,37 @@ To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
 npx hardhat keystore set SEPOLIA_PRIVATE_KEY
 ```
 
-After setting the variable, you can run the deployment with the Sepolia network:
+Para deploy também é necessário saber a URL do RPC da Sepolia,
+então a variável SEPOLIA_RPC_URL deve ser configurada no
+comando a seguir:
+
+```shell
+npx hardhat keystore set SEPOLIA_RPC_URL
+```
+
+
+Depois de configurar as variáveis é possível agora
+fazer o deploy na rede sepolia:
 
 ```shell
 npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
 ```
 
-Para fazer o verify do contrato:
+Para verificar o contrato do contrato:
+
+**Primeiro** é necessário configurar o valor 
+de mais uma variável na keystore, a `ETHERSCAN_APIKEY`.
+Seu valor deve estar em `etherscan.io` na conta que vc abriu.
+
+```shell
+npx hardhat keystore set ETHERSCAN_APIKEY
+```
+
+Note que todas essas variáveis definidas com `hardhat keystore`
+estão no arquivo `hardhat.config.ts`.
+
+**Segundo** Aplicar o comando `verify` no contrato deployed
+na pasta ignition:
 
 ```shell
 npx hardhat ignition verify --network sepolia NOME_DEPLOY_DA_PASTA_DEPLOYMENTS_IGNITION --show-stack-traces
@@ -121,8 +145,11 @@ No **Write Contract** vai ter os métodos de gravação
 - deleteLivro
 - updateLivro
 
-Observação: Sempre que for usar qualquer metodo acima é necessário estar conectado a web3
-Logo, na sepolia.etherscan.io, clique no botão vermelho `connect to web3` aí ele 
+Observação: Sempre que for usar qualquer 
+metodo acima é necessário estar conectado a web3
+
+Logo, na sepolia.etherscan.io, 
+clique no botão vermelho `connect to web3` aí ele 
 vai se conectar a carteira vinculada ao browser
 
 
@@ -136,8 +163,6 @@ OK 1. fazer o deploy para testenet usando o hardhat
 OK 2. testar/verificar o contrato na testenet
    - o verify so funciona se fizer de dentro do IDE, no caso, HARDHAT, se levar pra outro IDE o codigo vai der erro
 
-3. criar um dapp
-   - conectar com a carteira
-   - para explorar o contrato
-   - consultar saldo
-   - enviar fundos
+OK 3. Fazer um DAPP que use esse contrato via ABI
+
+OK 4. Fazer um DAPP que consulte saldo e envie fundo entre contas
