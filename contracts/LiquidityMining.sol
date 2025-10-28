@@ -9,6 +9,15 @@ import "./ILPToken.sol";
  funções diferentes. 
 
  Por exemplo, um controle de acesso em algumas funções administrativas. 
+
+ Então primeiro faça o contrato ser filho de Ownable
+
+ crie as funcoes setRewardFactor e setPeriodFactor como onlyOwner
+
+ porem essas funcoes não são justas se o token já estiver com valores, então
+
+ o correto é definir um modifier pra bloquear quando ocorrer isso, ao invés de um
+ require em cada função
  */
 import "@openzeppelin/contracts/access/Ownable.sol";
 
