@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./ILPToken.sol";
 
-abstract contract TokenLiquidez is ILPToken, ERC20, Ownable {
+contract TokenLiquidez is ILPToken, ERC20, Ownable {
     address public liquidityMining;
 
     constructor() ERC20("TokenLiquidez","LPT") Ownable(msg.sender) {
