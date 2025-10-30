@@ -166,3 +166,5 @@ OK 2. testar/verificar o contrato na testenet
 OK 3. Fazer um DAPP que use esse contrato via ABI
 
 OK 4. Fazer um DAPP que consulte saldo e envie fundo entre contas
+
+fazer testes de unidade e de no local funcionarem
