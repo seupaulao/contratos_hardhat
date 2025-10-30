@@ -1,4 +1,5 @@
-// SPDX-License-Indetifier: MIT
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.26;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -50,25 +51,26 @@ contract LiquidityMining is Ownable {
     /**
      * 01. TESTES até deposit
      * 
-     * 1. como conta 1, faça o deploy da MOEDA, tome nota do endereço deste contrato; 
+     * 1. como conta 1, faça o deploy da VaiDarPeCoin, tome nota do endereço deste contrato; 
      * 
-     * 2. como conta 1, transfira 1 MOEDA inteira para a conta 2 e verifique o saldo de MOEDA dela; 
+     * 2. como conta 1, transfira 1 VaiDarPeCoin inteira para a conta 2 
+     * e verifique o saldo de VaiDarPeCoin dela; 
      * 
      * 3. como conta 1, faça o deploy da TokenLiquidez, tome nota do endereço deste contrato; 
      * 
-     * 4. como conta 1, faça o deploy do LiquidityMining informando o endereço da MOEDA e 
+     * 4. como conta 1, faça o deploy do LiquidityMining informando o endereço da VaiDarPeCoin e 
      * da TokenLiquidez, tome nota do endereço deste novo contrato; 
      * 
      * 5. como conta 1, no contrato TokenLiquidez chame a função setLiquidityMining passando 
      * o endereço do contrato LiquidityMining;
      * 
-     * 6. como conta 2, no contrato MOEDA chame a funcao approve informando 
+     * 6. como conta 2, no contrato VaiDarPeCoin chame a funcao approve informando 
      * o endereço do contrato LiquidityMining e a quantia de 1 ether inteiro;
      * 
      * 7. como conta 2, no contrato LiquidityMining chame a função deposit informando
      * a quantia de 1 ether inteiro;
      * 
-     * 8. verifique o saldo de MOEDA na conta 2 e também do LiquidityMining para ver se
+     * 8. verifique o saldo de VaiDarPeCoin na conta 2 e também do LiquidityMining para ver se
      * estão corretos (saiu 1 ether do primeiro e foi para o segundo);
      */
 
@@ -109,21 +111,26 @@ contract LiquidityMining is Ownable {
      * 02. Testes
      * obs : defina periodFactor para algo entre 30s e 60s
      * 
-     * 1. espere algum tempo e consulte a calculateRewards para ver se já tem recompensa para a conta 2; 
+     * 1. espere algum tempo e consulte a calculateRewards para ver se já 
+     * tem recompensa para a conta 2; 
      * 
      * 2. quando tiver recompensas, com a conta 2 faça um saque de metade do saldo total;
      * 
      * 3. saque de metade do saldo total;
      * 
-     * 4. consulte o novo saldo da conta 2 no LiquidityMining, ele deve estar em metade do que tinha antes;
+     * 4. consulte o novo saldo da conta 2 no LiquidityMining, ele deve estar em 
+     * metade do que tinha antes;
      * 
-     * 5. consulte o novo saldo da conta 2 no LiquidityToken, ele deve estar com o total de recompensas recebido;
+     * 5. consulte o novo saldo da conta 2 no TokenLiquidez, ele deve estar com o 
+     * total de recompensas recebido;
      * 
-     * 6. consulte o total supply do LiquidityToken, ele deve estar no mesmo valor do que foi mintado recentemente;
+     * 6. consulte o total supply do TokenLiquidez, ele deve estar no mesmo valor 
+     * do que foi mintado recentemente;
      * 
-     * 7. consulte o novo saldo da conta 2 no LuizCoin, ele deve estar com o valor que sacou a mais;
+     * 7. consulte o novo saldo da conta 2 na VaiDarPeCoin, ele deve estar com o valor que sacou a mais;
      * 
-     * 8. aguarde mais algum tempo até ter novas recompensas e repita o processo zerando sua posição no pool
+     * 8. aguarde mais algum tempo até ter novas recompensas e repita o processo 
+     * zerando sua posição no pool
      */
 
     modifier isBloqueado() {
